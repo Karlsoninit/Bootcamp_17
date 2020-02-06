@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Spinner from '../../ui/spinner/Spinner';
 import NewArticles from './newArticles/NewArticles';
+import { fetchNews } from '../../fetcher';
+
 class News extends Component {
   state = {
     articles: [],
@@ -9,19 +11,24 @@ class News extends Component {
   };
 
   async componentDidMount() {
-    console.log('componentDidMount');
     try {
-      const data = await axios.get(
-        'https://newsapi.org/v2/everything?q=bitcoin&from=2020-01-06&sortBy=publishedAt&apiKey=69ff0a0f004045cd8a562c93279c0e93',
-      );
-
+      const data = await fetchNews();
       this.setState({
-        articles: data.data.articles,
+        articles: data,
         loading: false,
       });
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+    } catch (er) {
+      console.log(er);
+    }
+  }
+
+  async componentDidUpdate(prevProps) {
+    if (prevProps.inputValue !== this.props.inputValue) {
+      const data = await fetchNews(this.props.inputValue);
+      this.setState({
+        articles: data,
+        loading: false,
+      });
     }
   }
 

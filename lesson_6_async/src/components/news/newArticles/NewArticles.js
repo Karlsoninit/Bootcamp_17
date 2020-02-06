@@ -1,13 +1,15 @@
 import React from 'react';
-import NewItem from '../newsItem/NewItem';
 import shortId from 'shortid';
+import MediaCard from '../../../ui/mediaCard/MediaCard';
 const NewArticles = ({ data }) => (
-  <ul>
+  <div style={{ display: 'flex', flexWrap: 'wrap' }}>
     {data.map(article => {
       const transformArticle = { ...article, id: shortId() };
-      return <NewItem key={transformArticle.id} {...transformArticle} />;
+      return (
+        <MediaCard key={transformArticle.id} {...(transformArticle || {})} />
+      );
     })}
-  </ul>
+  </div>
 );
 
 export default NewArticles;
