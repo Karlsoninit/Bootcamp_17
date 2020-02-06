@@ -1,9 +1,12 @@
 import React from 'react';
-
-import './App.css';
+import News from './components/news/News';
 
 function App(title = 'fdfd') {
-  return <h2>{title}</h2>;
+  return (
+    <>
+      <News />
+    </>
+  );
 }
 
 export default App;
