@@ -1,0 +1,2 @@
+(this["webpackJsonplesson_7_react-router"]=this["webpackJsonplesson_7_react-router"]||[]).push([[1],{184:function(e,t,n){"use strict";n.r(t);var r=n(0),s=n.n(r);t.default=function(e){return console.log(e.history),s.a.createElement("h2",null,"Auth")}}}]);
+//# sourceMappingURL=Auth.6aa33e70.chunk.js.map

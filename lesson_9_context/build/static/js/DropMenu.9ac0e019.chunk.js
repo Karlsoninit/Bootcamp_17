@@ -1,0 +1,2 @@
+(this["webpackJsonplesson_7_react-router"]=this["webpackJsonplesson_7_react-router"]||[]).push([[2],{185:function(e,t,n){"use strict";n.r(t);var r=n(0),s=n.n(r);t.default=function(){return s.a.createElement("h2",null,"DROP_MENU")}}}]);
+//# sourceMappingURL=DropMenu.9ac0e019.chunk.js.map
