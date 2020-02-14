@@ -10,22 +10,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ContainedButtons() {
+export default function ContainedButtons({ onHandleMenuOpen, buttonName }) {
   const classes = useStyles();
 
   return (
-    <NewsContext.Consumer>
-      {({ onHandleMenuOpen, buttonName }) => (
-        <div className={classes.root}>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={onHandleMenuOpen}
-          >
-            {buttonName}
-          </Button>
-        </div>
-      )}
-    </NewsContext.Consumer>
+    <div className={classes.root}>
+      <Button variant="contained" color="secondary" onClick={onHandleMenuOpen}>
+        {buttonName}
+      </Button>
+    </div>
   );
 }

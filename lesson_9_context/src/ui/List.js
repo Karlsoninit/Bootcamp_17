@@ -7,7 +7,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
-
+import { toggle } from "../HOC/toggle";
+import { ControllerContext } from "../context/ControllerContext";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
@@ -20,7 +22,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AlignItemsList({ image, title, author, description }) {
+const AlignItemsList = ({
+  image,
+  title,
+  author,
+  description,
+  source,
+  query
+}) => {
   const classes = useStyles();
 
   return (
@@ -48,4 +57,6 @@ export default function AlignItemsList({ image, title, author, description }) {
       </ListItem>
     </List>
   );
-}
+};
+
+export default toggle("https//:somefindNews")(AlignItemsList);
