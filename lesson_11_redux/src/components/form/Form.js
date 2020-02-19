@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { addTodo } from "../redux/todo/todoActions";
-import { connect } from "react-redux";
+
 import shortId from "shortid";
 
 const initialState = { qwery: "" };
@@ -40,4 +39,4 @@ class Form extends Component {
   }
 }
 
-export default connect(null, { addTodo })(Form);
+export default Form;

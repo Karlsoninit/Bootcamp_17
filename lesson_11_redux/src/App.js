@@ -1,7 +1,8 @@
 import React from "react";
-import Counter from "./components/Counter";
-import Form from "./components/Form";
-import TodoList from "./components/TodoList";
+import Counter from "./components/counter/counterContainter";
+import Form from "./components/form/formContainer";
+import TodoList from "./components/todo/TodoList";
+
 const App = () => (
   <>
     <Counter />
