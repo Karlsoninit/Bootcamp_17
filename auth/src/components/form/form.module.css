@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  width: 600px;
+  padding: 20;
+  border: 1px solid greeen;
+  border-radius: 10px;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 200px;
+}
+
+.input {
+  margin-bottom: 15px;
+}
