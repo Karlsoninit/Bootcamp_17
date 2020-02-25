@@ -1,5 +1,3 @@
 import React from "react";
 
-const HomePage = () => <h2>HomePage</h2>;
-
-export default HomePage;
+export const HomePage = () => <h2>HomePage</h2>;
