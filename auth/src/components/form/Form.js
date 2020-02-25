@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styles from "./form.module.css";
@@ -12,9 +13,10 @@ const initialState = {
 export default class Form extends Component {
   state = { ...initialState };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     console.log(this.state);
+    this.props.credential(this.state);
     this.setState({ ...initialState });
   };
   handleChange = e => {
@@ -58,7 +60,7 @@ export default class Form extends Component {
           type="submit"
           disableElevation
         >
-          SUBMIT
+          {this.props.formName}
         </Button>
       </form>
     );

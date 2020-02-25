@@ -6,7 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { logOut } from "../../redux/operations/authOperations";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Navigation() {
+function Navigation({ logOut, isAuth }) {
   const classes = useStyles();
 
   return (
@@ -39,19 +41,29 @@ export default function Navigation() {
             News
           </Typography>
           <Link to="/register"></Link>
+          {!isAuth ? (
+            <>
+              <Link to="/Login">
+                <Button color="inherit">Login</Button>
+              </Link>
 
-          <Link to="/Login">
-            <Button color="inherit">Login</Button>
-          </Link>
-
-          <Button color="inherit">
-            <Link to="/register">Register</Link>
-          </Button>
-          <Button color="inherit">
-            <Link to="/LogOut">LogOut</Link>
-          </Button>
+              <Button color="inherit">
+                <Link to="/register">Register</Link>
+              </Button>
+            </>
+          ) : (
+            <Button color="inherit" onClick={() => logOut()}>
+              LogOut
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+const mSTP = state => ({
+  isAuth: state.auth.isAuthentication
+});
+
+export default connect(mSTP, { logOut })(Navigation);
