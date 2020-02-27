@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Form from "../components/form/Form";
 import { register } from "../redux/operations/authOperations";
 
-const RegisterPage = () => {
+const RegisterPage = ({ register }) => {
   return <Form formName="Register" credential={register} />;
 };
 

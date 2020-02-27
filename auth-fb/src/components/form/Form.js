@@ -5,7 +5,9 @@ import styles from "./form.module.css";
 
 const initialState = {
   email: "",
-  password: ""
+  password: "",
+  firstName: "",
+  lastName: ""
 };
 
 // const classes = useStyles();
@@ -15,7 +17,7 @@ export default class Form extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     this.props.credential(this.state);
 
     this.setState({ ...initialState });
@@ -26,7 +28,8 @@ export default class Form extends Component {
     });
   };
   render() {
-    const { email, password } = this.state;
+    console.log("formName", this.props.formName);
+    const { email, password, firstName, lastName } = this.state;
     return (
       <form
         className={[styles.container].join(" ")}
@@ -55,6 +58,30 @@ export default class Form extends Component {
           value={password}
           onChange={this.handleChange}
         />
+        {this.props.formName === "Register" && (
+          <>
+            <TextField
+              style={{ marginBottom: 10 }}
+              name="lastName"
+              label="LastName"
+              variant="outlined"
+              color="secondary"
+              value={lastName}
+              type="text"
+              onChange={this.handleChange}
+            />
+            <TextField
+              style={{ marginBottom: 10 }}
+              label="FirstName"
+              variant="outlined"
+              color="secondary"
+              name="firstName"
+              type="text"
+              value={firstName}
+              onChange={this.handleChange}
+            />
+          </>
+        )}
         <Button
           variant="contained"
           color="primary"

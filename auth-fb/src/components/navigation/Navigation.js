@@ -9,7 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logOut } from "../../redux/operations/authOperations";
-
+import db from "../../config/fbConfig";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Navigation({ logOut, isAuth }) {
+function Navigation({ auth }) {
   const classes = useStyles();
 
   return (
@@ -41,28 +41,29 @@ function Navigation({ logOut, isAuth }) {
             News
           </Typography>
           <Link to="/register"></Link>
-
-          <>
-            <Link to="/Login">
-              <Button color="inherit">Login</Button>
-            </Link>
-
-            <Button color="inherit">
-              <Link to="/register">Register</Link>
-            </Button>
-          </>
-
-          <Button color="inherit" onClick={() => {}}>
-            LogOut
-          </Button>
+          {auth ? (
+            <>
+              <Button color="inherit" onClick={() => db.auth().signOut()}>
+                LogOut
+              </Button>
+              <Button component={Link} color="inherit" to={"/createUser"}>
+                CREATE
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link to="/Login">
+                <Button color="inherit">Login</Button>
+              </Link>
+              <Button color="inherit">
+                <Link to="/register">Register</Link>
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-const mSTP = state => ({
-  isAuth: state.auth.isAuthentication
-});
-
-export default connect(mSTP, { logOut })(Navigation);
+export default Navigation;
